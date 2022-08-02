@@ -31,8 +31,8 @@ if __name__ == '__main__':
   cap = cv2.VideoCapture(0)
   bg = cv2.imread("bauhaus_nothing.jpg")
 
-  print("using NumPy  version "+np.__version__)
-  print("using TFLite version "+tf.__version__)
+  print(f"using NumPy  version {np.__version__}")
+  print(f"using TFLite version {tf.__version__}")
 
   parser = argparse.ArgumentParser()
   parser.add_argument(
@@ -91,7 +91,7 @@ if __name__ == '__main__':
 
     # find the highest-probability class for each pixel (along axis 2)
     out = np.apply_along_axis(np.argmax,2,results)
-      
+
     # set pixels with likeliest class == person to 255
     pers_idx = labels.index("person")
     person = np.where(out == pers_idx, 255, 0).astype(np.uint8)
@@ -103,7 +103,7 @@ if __name__ == '__main__':
 
     e2 = cv2.getTickCount()
     t = (e2 - e1)/cv2.getTickFrequency()
-    print("total runtime: "+str(t))
+    print(f"total runtime: {str(t)}")
 
     cv2.imshow("input",img)
     if cv2.waitKey(1) & 0xFF == ord('q'):

@@ -2,7 +2,7 @@
 import tensorflow as tf
 print(tf.__version__)
 import_dir = "./savedmodel"
-export_dir = import_dir+"_signaturedefs"
+export_dir = f"{import_dir}_signaturedefs"
 
 def get_graph_def_from_saved_model(saved_model_dir):
     with tf.compat.v1.Session() as session:
